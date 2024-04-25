@@ -126,7 +126,31 @@ h1,h2,h3,h4,h5,h6{
     z-index: 99;
     display: block;
 }
+.card-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto; /* Canh giữa theo chiều ngang */
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    z-index: 1; /* Đảm bảo thẻ card không bị lấn lên bởi các phần tử có z-index cao hơn */
+}
 
+.card {
+    width: 100%;
+}
+
+.card-body-introduce {
+    font-size: 30px; /* Đặt kích thước chữ lớn hơn */
+}
+.card-title-introduce {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center; /* Căn giữa tiêu đề */
+    margin-bottom: 10px; /* Tạo một khoảng cách dưới cùng của tiêu đề */
+    margin-top: 10px; /* Tạo một khoảng cách trên cùng của tiêu đề */
+}
 
 
 

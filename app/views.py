@@ -45,7 +45,6 @@ def detail(request):
     context = {'products':products,'sub_categories':sub_categories,'items': items,'order':order,'cartItems':cartItems,'user_not_login':user_not_login,'user_login':user_login} 
     return render(request,'app/detail.html',context)
 def category(request):
-    categories = Category.objects.filter(is_sub =False)
     sub_categories = Category.objects.filter(is_sub =True)
     active_category = request.GET.get('category','')
     if active_category:
@@ -63,7 +62,7 @@ def category(request):
         cartItems = order['get_cart_items']
         user_not_login = "show"
         user_login = "hidden"
-    context = {'categories':categories,'sub_categories':sub_categories,'items': items,'products':products,'active_category':active_category,'cartItems':cartItems,'user_not_login':user_not_login,'user_login':user_login}
+    context = {'sub_categories':sub_categories,'items': items,'products':products,'active_category':active_category,'cartItems':cartItems,'user_not_login':user_not_login,'user_login':user_login}
     return render(request,'app/category.html',context)
 def search(request):
     if request.method == "POST":

@@ -5,7 +5,62 @@ import json
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
+from django.contrib.auth.models import User
 # Create your views here.
+def founder(request):
+    if request.user.is_authenticated:
+        customer = request.user
+        order, created = Order.objects.get_or_create(customer=customer,complete = False)
+        items = order.orderitem_set.all()
+        cartItems = order.get_cart_items
+        user_not_login = "hidden"
+        user_login = "show"
+    else:
+        items = []
+        order = {'get_cart_items':0,'get_cart_total':0}    
+        cartItems = order['get_cart_items'] 
+        user_not_login = "show"
+        user_login = "hidden"  
+    #categories = Category.objects.filter(is_sub =False)
+    sub_categories = Category.objects.filter(is_sub =True)
+    context = {'sub_categories':sub_categories,'items': items,'order':order,'cartItems':cartItems,'user_not_login':user_not_login,'user_login':user_login} 
+    return render(request,'app/founder.html',context)
+def payqr(request):
+    if request.user.is_authenticated:
+        customer = request.user
+        order, created = Order.objects.get_or_create(customer=customer,complete = False)
+        items = order.orderitem_set.all()
+        cartItems = order.get_cart_items
+        user_not_login = "hidden"
+        user_login = "show"
+    else:
+        items = []
+        order = {'get_cart_items':0,'get_cart_total':0}    
+        cartItems = order['get_cart_items'] 
+        user_not_login = "show"
+        user_login = "hidden"  
+    #categories = Category.objects.filter(is_sub =False)
+    sub_categories = Category.objects.filter(is_sub =True)
+    context = {'sub_categories':sub_categories,'items': items,'order':order,'cartItems':cartItems,'user_not_login':user_not_login,'user_login':user_login} 
+    return render(request,'app/payqr.html',context)
+def pay(request):
+    if request.user.is_authenticated:
+        customer = request.user
+        order, created = Order.objects.get_or_create(customer=customer,complete = False)
+        items = order.orderitem_set.all()
+        cartItems = order.get_cart_items
+        user_not_login = "hidden"
+        user_login = "show"
+    else:
+        items = []
+        order = {'get_cart_items':0,'get_cart_total':0}    
+        cartItems = order['get_cart_items'] 
+        user_not_login = "show"
+        user_login = "hidden"  
+    #categories = Category.objects.filter(is_sub =False)
+    sub_categories = Category.objects.filter(is_sub =True)
+    context = {'sub_categories':sub_categories,'items': items,'order':order,'cartItems':cartItems,'user_not_login':user_not_login,'user_login':user_login} 
+    return render(request,'app/pay.html',context)
 def introduce(request):
     if request.user.is_authenticated:
         customer = request.user
@@ -87,22 +142,41 @@ def search(request):
     return render(request,'app/search.html',{'sub_categories':sub_categories,"searched": searched,'items': items, "keys": keys,'products': products,'cartItems':cartItems,'user_not_login':user_not_login,'user_login':user_login})
 def register(request):
     form = CreateUserForm()
+    if request.user.is_authenticated:
+        customer = request.user
+        order, created = Order.objects.get_or_create(customer=customer,complete = False)
+        items = order.orderitem_set.all()
+        cartItems = order.get_cart_items
+        user_not_login = "hidden"
+        user_login = "show"
     if request.method == "POST":
         form = CreateUserForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save(commit=False)  # Chưa lưu vào cơ sở dữ liệu
+            password = form.cleaned_data.get('password1')
+            user.set_password(password)  # Mã hóa mật khẩu
+            user.save()
             return redirect('login')
         user_not_login = "hidden"
         user_login = "show"
     else:
+        items = []
+        order = {'get_cart_items':0,'get_cart_total':0} 
+        cartItems = order['get_cart_items']
         user_not_login = "show"
         user_login = "hidden"
     #categories = Category.objects.filter(is_sub =False)
     sub_categories = Category.objects.filter(is_sub =True)
-    context = {'sub_categories':sub_categories,'form':form,'user_not_login':user_not_login,'user_login':user_login}
+    context = {'sub_categories':sub_categories,'form':form,'user_not_login':user_not_login,'user_login':user_login,'items': items,'cartItems':cartItems,}
     return render(request,'app/register.html',context)
 def loginPage(request):
     if request.user.is_authenticated:
+        customer = request.user
+        order, created = Order.objects.get_or_create(customer=customer,complete = False)
+        items = order.orderitem_set.all()
+        cartItems = order.get_cart_items
+        user_not_login = "hidden"
+        user_login = "show"
         return redirect('home')
     if request.method == "POST":
         user_not_login = "hidden"
@@ -195,3 +269,4 @@ def updateitems(request):
     if orderItem.quantity <=0:
         orderItem.delete()
     return JsonResponse('added',safe=False)
+

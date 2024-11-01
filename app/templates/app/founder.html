@@ -1,0 +1,70 @@
+{% extends "app/base.html" %}
+{% load static %}
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{%static 'app/css/style.css' %}">
+</head>
+
+<body>
+    {% block register %}
+    <div class="team-boxed">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center">We Bare Bears</h2>
+                <p class="text-center" style="font-size: 1.5rem;"><strong>Ba người, Ba tính cách - Một đội, Một mục tiêu, Gấp ba niềm vui, Gấp ba sự sáng tạo!.</strong></p>
+            </div>
+            <div class="row people">
+                <div class="col-md-6 col-lg-4 item">
+                    <div class="box">
+                        <img class="rounded-circle" src="{% static 'app/images/Hao.jpg' %}">
+                        <h3 class="name">Hà Vỹ Hào</h3>
+                        <p class="title">Dev/Design</p>
+                        <p class="description">Một người, một tâm hồn - sống hết mình, nhưng không thiếu sự vui vẻ!.</p>
+                        <div class="social d-flex justify-content-center">    
+                            <a href="https://www.facebook.com/hao.ha.12720" class="mx-3"><i class="fab fa-facebook-f"></i></a>             
+                            <a href="#" class="mx-3"><i class="fab fa-twitter"></i></a>                       
+                            <a href="#" class="mx-3"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 item">
+                    <div class="box">
+                        <img class="rounded-circle" src="{% static 'app/images/Doan.jpg' %}">
+                        <h3 class="name">Huỳnh Phương Đoan</h3>
+                        <p class="title">Word/Ppt</p>
+                        <p class="description">Tôi sống theo cách riêng của mình - không có giới hạn nào cho ước mơ!</p>
+                        <div class="social d-flex justify-content-center">    
+                            <a href="https://www.facebook.com/carrot.kwii" class="mx-3"><i class="fab fa-facebook-f"></i></a>             
+                            <a href="#" class="mx-3"><i class="fab fa-twitter"></i></a>                       
+                            <a href="#" class="mx-3"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 item">
+                    <div class="box">
+                        <img class="rounded-circle" src="{% static 'app/images/Phuong.jpg' %}">
+                        <h3 class="name">Ngô Minh Phương</h3>
+                        <p class="title">Chatbot/Tester</p>
+                        <p class="description">Đơn độc nhưng không cô đơn - tôi có một kho tàng hài hước trong đầu!</p>
+                        <div class="social d-flex justify-content-center">    
+                            <a href="https://www.facebook.com/NgoMinhPhuong.va.traitim.tannat" class="mx-3"><i class="fab fa-facebook-f"></i></a>             
+                            <a href="#" class="mx-3"><i class="fab fa-twitter"></i></a>                       
+                            <a href="#" class="mx-3"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+    {% endblock register %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

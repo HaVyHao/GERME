@@ -104,3 +104,13 @@ $('.minus-wishlist').click(function(){
         }
     })
 })
+
+document.getElementById("togglePassword").addEventListener("click", function() {
+    const passwordField = document.getElementById("password");
+    const type = passwordField.getAttribute("type") === "password" ? "text" : "password";
+    passwordField.setAttribute("type", type);
+    
+    // Đổi biểu tượng mắt khi ẩn/hiện mật khẩu
+    this.classList.toggle("fa-eye");
+    this.classList.toggle("fa-eye-slash");
+});

@@ -12,40 +12,67 @@
     <body>
         {% block register %}
         {% for product in products  %}
-        <div class="container mt-5 mb-5">
-          <div class="row d-flex justify-content-center">
-              <div class="col-md-10">
-                  <div class="card">
-                      <div class="row">
-                          <div class="col-md-6">
-                              <div class="images p-3">
-                                  <div class="text-center p-4"> <img id="main-image" src="{{product.ImageURL}}" width="250" /> </div>
-                              </div>
-                          </div>
-                          <div class="col-md-6">
-                              <div class="product p-4">
-                                  <div class="d-flex justify-content-between align-items-center">
-                                      <div class="d-flex align-items-center"> <i class="fa fa-long-arrow-left"></i><span class="ml-1"><a href={% url "home" %}>Trở Lại</a></span> </div> 
-                                  </div>
-                                  <div class="mt-4 mb-3"> <span class="text-uppercase text-muted brand">Mô tả sản phẩm:</span>
-                                      <h5 class="text-uppercase">{{product.name}}</h5>
-                                      <div class="price d-flex flex-row align-items-center"> <span class="act-price">{{product.price}}VND</span>
+
+    
+                <div class="container mt-5 mb-5">
+                  <div class="row d-flex justify-content-center">
+                      <div class="col-md-10">
+                          <div class="card">
+                              <div class="row">
+                                  <div class="col-md-6">
+                                      <div class="images p-3">
+                                          <div class="text-center p-4"> <img id="main-image" src="{{product.ImageURL}}" width="350" /> </div>
                                       </div>
                                   </div>
-                                  <p class="about">{{product.detail}}</p>
-                                  <div class="cart mt-4 align-items-center">
-                                     <button data-product={{product.id}} data-action= "add" class="btn btn-danger text-uppercase mr-2 px-4 add-bth update-cart">Thêm Vào Giỏ Hàng</button>
+                                  <div class="col-md-6">
+                                      <div class="product p-4">                                       
+                                          <div class="d-flex justify-content-between align-items-center">
+                                              <div class="d-flex align-items-center"> <i class="fa fa-long-arrow-left"></i><span class="ml-1"><a href={% url "home" %}>Trở Lại</a></span> </div> 
+                                          </div>
+                                          <div class="rating">
+                                            <div class="stars">
+                                                <span class="fa fa-star text-warning"></span>
+                                                <span class="fa fa-star text-warning"></span>
+                                                <span class="fa fa-star text-warning"></span>
+                                                <span class="fa fa-star text-warning"></span>
+                                                <span class="fa fa-star"></span>
+                                            </div>
+                                            <span class="review-no">41 reviews</span>
+                                            </div>
+                                          <div class="mt-4 mb-3"> <span class="text-uppercase text-muted brand">Mô tả sản phẩm:</span>
+                                              <h5 class="text-uppercase">{{product.name}}</h5>
+                                              <h5 class="sizes">Sizes:
+                                                <span class="size" data-toggle="tooltip" title="small">S</span>
+                                                <span class="size" data-toggle="tooltip" title="medium">M</span>
+                                                <span class="size" data-toggle="tooltip" title="large">L</span>
+                                                <span class="size" data-toggle="tooltip" title="xtra large">XL</span>
+                                              </h5>
+                                              
+                                              <div class="price d-flex flex-row align-items-center"> <span class="act-price">{{product.price}}VND</span>
+                                              </div>
+                                          </div>
+                                          <p class="about">{{product.detail}}</p>
+                                          <div class="cart mt-4 align-items-center">
+                                             <button data-product={{product.id}} data-action= "add" class="btn btn-danger text-uppercase mr-2 px-4 add-bth update-cart">Thêm Vào Giỏ Hàng</button>
+                                             <button class="like btn btn-default btn-lg" type="button"><span class="fa fa-heart"></span></button>
+                                          </div>
+                                      </div>
                                   </div>
                               </div>
                           </div>
                       </div>
                   </div>
-              </div>
-          </div>
-      </div>
+                </div>
+
+                
+
+
       {% endfor %}
         <br /><br /><br />
         {% endblock register %}
+        
+
+
         
     </body>
 

@@ -4,7 +4,7 @@
      <div class="row" style="width:100%">
 		<div class="col-lg-6">
 			<div class="box-element" id="form-wrapper">
-				<form id="form">
+				<form id="form" action="{% url 'home' %}">
 					<div id="user-info">
 						<div class="form-field">
 							<input required class="form-control" type="text" name="name" placeholder="Họ và Tên...">
@@ -40,16 +40,48 @@
 							<input class="form-control" type="text" name="country" placeholder="Tên người nhận...">
 						</div>
 					</div>
-
+					
 					<hr>
-					<input id="form-button" class="btn btn-success btn-block" type="submit" href="{% url 'home' %}" value="Tiếp Tục" >
+					<hr>
+
+					<!-- Lựa chọn phương thức thanh toán -->
+					<div id="payment-method">
+						<p>Chọn Phương Thức Thanh Toán:</p>
+						<div class="form-check">
+							<input type="radio" id="payment-direct" name="payment_method" value="direct" class="form-check-input">
+							<label for="payment-direct">Thanh toán trực tiếp</label>
+						</div>
+						<div class="form-check">
+							<input type="radio" id="payment-qr" name="payment_method" value="qr" class="form-check-input">
+							<label for="payment-qr">Thanh toán qua QR</label>
+						</div>
+					</div>
+				
+					<hr>
+					<input id="form-button" class="btn btn-success btn-block" type="button" value="Tiếp Tục" >
+					
+
 				</form>
+				<script>
+					document.getElementById("form-button").onclick = function() {
+						// Lấy giá trị của phương thức thanh toán
+						const paymentDirect = document.getElementById("payment-direct").checked;
+						const paymentQR = document.getElementById("payment-qr").checked;
+				
+						// Chuyển hướng dựa trên lựa chọn
+						if (paymentDirect) {
+							window.location.href = "{% url 'pay' %}"; // Đường dẫn đến trang thanh toán trực tiếp
+						} else if (paymentQR) {
+							window.location.href = "{% url 'payqr' %}"; // Đường dẫn đến trang thanh toán qua QR
+						} else {
+							alert("Vui lòng chọn phương thức thanh toán.");
+						}
+					}
+				</script>
 			</div>
 
 			<br>
-			<div class="box-element hidden" id="payment-info">
-				<small>Phương thức nhận hàng trả tiền</small>
-			</div>
+
 			
 		</div>
 
@@ -63,12 +95,13 @@
 				<div class="cart-row">
 					<div style="flex:2"><img class="row-image" src="{{item.product.ImageURL}}"></div>
 					<div style="flex:2"><p>{{item.product.name}}</p></div>
-					<div style="flex:1"><p>{{item.product.price}} VND</p></div>
+					<div style="flex:1"><p>{{item.product.price}} $</p></div>
 					<div style="flex:1"><p>{{item.quantity}}</p></div>
 				</div>
 				{% endfor %}
 				<h5>Sản Phẩm:   {{order.get_cart_items}}</h5>
-				<h5>Tổng Cộng:   {{order.get_cart_total}} VND</h5>
+				<h5>Tổng Cộng:   {{order.get_cart_total}} $</h5>
+				
 			</div>
 		</div>
 	</div>

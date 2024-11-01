@@ -1,0 +1,30 @@
+{% extends "app/base.html" %}
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name = "description" content="">
+        <meta name = "viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        {% block register %}
+        <div class="d-flex justify-content-center mt-5">
+            <div class="card text-center shadow-lg" style="width: 40rem; height: 18rem; border-radius: 15px; border: none;">
+                <div class="card-header bg-success text-white" style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
+                    <h5 class="mb-0 text-white">Thanh Toán Thành Công!</h5>
+                </div>
+                <img src="{% static 'app/images/t.png' %}" class="card-img-top mx-auto mt-3" alt="Success Icon" style="width: 100px; height: 100px;">
+                <div class="card-body">
+                    <p class="card-text" style="font-size: 1.1rem; color: #555;">Cảm ơn bạn đã tin tưởng và sử dụng dịch vụ của chúng tôi.</p>
+                    <a href="{% url 'home' %}" class="btn btn-success mt-3" style="border-radius: 25px; padding: 10px 20px;">Tiếp Tục Mua Sắm</a>
+                </div>
+            </div>
+        </div>
+        {% endblock register %}
+        
+    </body>
+
+</html>

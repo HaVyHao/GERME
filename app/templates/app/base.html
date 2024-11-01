@@ -10,6 +10,18 @@
         <link href= "{% static 'app/css/owl.carousel.min.css' %}" rel = "stylesheet" />
         <link href= "{% static 'app/css/all.min.css' %}" rel = "stylesheet" />
         <link rel = "stylesheet" typpe = "text/css" href= "{% static 'app/css/main.css' %}" />
+        
+        <!-- Css Styles -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+        <link rel="stylesheet" href="{%static 'app/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{%static 'app/css/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="{%static 'app/css/elegant-icons.css' %}">
+        <link rel="stylesheet" href="{%static 'app/css/nice-select.css' %}">
+        <link rel="stylesheet" href="{%static 'app/css/jquery-ui.min.css' %}">
+        <link rel="stylesheet" href="{%static 'app/css/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{%static 'app/css/slicknav.min.css' %}">
+        <link rel="stylesheet" href="{%static 'app/css/style.css' %}">
+        <link rel="stylesheet" href="{%static 'app/sass/style.scss' %}">
         <!--javacript-->
         <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
@@ -36,77 +48,82 @@
         }
         const csrftoken = getCookie('csrftoken');
         </script>
+        
         <link rel="icon" type="image/png" href="{% static 'app/images/favicon.png' %}">
-        <title>CARROT</title>
+        <title>GERME</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
     </head>
     <body>
         <!--Header-->
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">  
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">
-                <img src = "{% static 'app/images/H&D.png'  %}" width = "80" height = "80" />
-              </a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Trang Chủ</a>
-                  </li>
-                  
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Sản Phẩm
-                    </a>
-                    <ul class="dropdown-menu">
-                      
-                      {% for category in categories %}
-                      <li><a class="dropdown-item" href="{% url 'category' %}?category={{category.slug}}">{{category.name}}</a></li>
-                      <li><a class="dropdown-item" href="{% url 'category' %}?category={{i.slug}}">{{i.name}}</a></li>
-                      {% endfor %}
-                      {% for i in sub_categories %}
-                      <li><a class="dropdown-item" href="{% url 'category' %}?category={{i.slug}}">{{i.name}}</a></li>
-                      {% endfor %}
-                    </ul>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="https://www.facebook.com/profile.php?id=61559011852069">Giới Thiệu Sản Phẩm</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link " href="https://m.me/61559011852069">Liên Hệ</a>
-                  </li>
-                </ul>
-                <form class="d-flex" role="search"method = POST action = "{% url 'search' %}">
-                  {% csrf_token %}
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name = "searched">
-                  <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+        <p class="text-bg-secondary text-center text-light fixed-top">Where Style Meets Sophistication</p>
+          <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary ">  
+              <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'home' %}">
+                  <img src = "{% static 'app/images/G.png'  %}" width = "150" height = "150" />
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Trang Chủ</a>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Danh Mục Sản Phẩm
+                      </a>
+                      <ul class="dropdown-menu">
+                        
+                        {% for category in categories %}
+                        <li><a class="dropdown-item" href="{% url 'category' %}?category={{category.slug}}">{{category.name}}</a></li>
+                        <li><a class="dropdown-item" href="{% url 'category' %}?category={{i.slug}}">{{i.name}}</a></li>
+                        {% endfor %}
+                        {% for i in sub_categories %}
+                        <li><a class="dropdown-item" href="{% url 'category' %}?category={{i.slug}}">{{i.name}}</a></li>
+                        {% endfor %}
+                      </ul>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'introduce' %}">Giới Thiệu</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link " href="https://m.me/61559011852069">Liên Hệ</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link " href="https://m.me/61559011852069">The Founders</a>
+                    </li>
+                  </ul>
+                  <form class="d-flex" role="search"method = POST action = "{% url 'search' %}">
+                    {% csrf_token %}
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name = "searched">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                  </form>
+                </div>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" style ="margin-left:30px">
+                  <div class="form-inline my-2 my-lg-0" style = "visibility" {{user_login}}>
+                    <span>Xin chào! {{ request.user }}</span>
+                    <span><a href="{% url 'logout' %}">Đăng Xuất</a></span>
+                  </div>
+                    <li class="nav-item">
+                      <div class="form-inline my-2 my-lg-0" style = "visibility" {{user_not_login}}>
+                        <a class="nav-link" style ="margin-left:20px" href="{% url 'login' %}">Đăng Nhập</a>
+                      </div>  
+                    </li>
+                    <li class="nav-item">
+                      <div class="form-inline my-2 my-lg-0" style = "visibility" {{user_not_login}}>
+                        <a class="nav-link" style ="margin-left:20px" href="{% url 'register' %}">Đăng Ký</a>
+                      </div>
+                    </li>               
+                </ul> 
+                <div class="form-inline my-2 my-lg-0">
+                  <a href="{% url 'cart' %}"><img id="cart-icon" src="{% static 'images/cart.png' %}"></a>
+                  <p id='cart-total' >{{cartItems}}</p> 
+                  </div>
               </div>
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0" style ="margin-left:30px">
-                <div class="form-inline my-2 my-lg-0" style = "visibility" {{user_login}}>
-                  <span>Xin chào! {{ request.user }}</span>
-                  <span><a href="{% url 'logout' %}">Đăng Xuất</a></span>
-                </div>
-                  <li class="nav-item">
-                    <div class="form-inline my-2 my-lg-0" style = "visibility" {{user_not_login}}>
-                      <a class="nav-link" style ="margin-left:20px" href="{% url 'login' %}">Đăng Nhập</a>
-                    </div>  
-                  </li>
-                  <li class="nav-item">
-                    <div class="form-inline my-2 my-lg-0" style = "visibility" {{user_not_login}}>
-                      <a class="nav-link" style ="margin-left:20px" href="{% url 'register' %}">Đăng Ký</a>
-                    </div>
-                  </li>               
-              </ul> 
-              <div class="form-inline my-2 my-lg-0">
-                <a href="{% url 'cart' %}"><img id="cart-icon" src="{% static 'images/cart.png' %}"></a>
-                <p id='cart-total' >{{cartItems}}</p> 
-                </div>
-            </div>
           </nav>
         <!--MainBody-->
         {% block banner_slider %}{% endblock banner_slider %}
@@ -121,7 +138,7 @@
   <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
     <!-- Left -->
     <a class="navbar-brand" href="http://online.gov.vn/">
-      <img src = "{% static 'app/images/BCT.png'  %}" width = "200" height = "100" />
+      <img src = "{% static 'app/images/BCT.png'  %}" width = "220" height = "100"/>
     </a>
     <!-- Left -->
 
@@ -191,7 +208,7 @@
         <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
           <!-- Content -->
           <h6 class="text-uppercase fw-bold mb-4">
-            <i class="fas fa-gem me-3"></i>CÔNG TY TNHH CARROT
+            <i class="fas fa-gem me-3"></i>CÔNG TY TNHH GERME
           </h6>
           <p>
             Nơi Vẻ Đẹp Bắt Đầu.
@@ -203,10 +220,10 @@
         <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
           <!-- Links -->
           <h6 class="text-uppercase fw-bold mb-4">
-            VỀ CARROT
+            VỀ GERME
           </h6>
           <p>
-            <a href="{% url 'introduce' %}" class="text-reset">Tìm hiểu về CARROT</a>
+            <a href="{% url 'introduce' %}" class="text-reset">Tìm hiểu về GERME</a>
           </p>
           <p>
             <a href="{% url 'introduce' %}" class="text-reset">Nguồn gốc thương hiệu</a>
@@ -256,8 +273,8 @@
   <!-- Section: Links  -->
   <!-- Copyright -->
   <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-    © 2024 by Copyright CARROT<br/ >
-    <a class="text-reset fw-bold" href="https://mdbootstrap.com/">Tất cả các sản phẩm đều không phải là thuốc, không có chức năng thay thế thuốc chữa bệnh. Thực phẩm thảo dược nhằm hỗ trợ, tăng cường và duy trì chức năng cơ thể. (*) Website chúng tôi đang trong quá trình thử nghiệm, sửa lỗi, hoàn thiện và xin giấy phép BCT.</a>
+    © 2024 by Copyright GERME<br/ >
+    <a class="text-reset fw-bold" href="https://mdbootstrap.com/"><em>Nơi Phong Cách Gặp Gỡ Sự Sang Trọng</em></a>
   </div>
   <!-- Copyright -->
 </footer>

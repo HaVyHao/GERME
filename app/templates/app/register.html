@@ -17,7 +17,7 @@
               <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-lg-12 col-xl-11">
                   <div class="card text-black" style="border-radius: 25px;">
-                    <div class="card-body p-md-5">
+                    <div class="card-body p-md-4">
                       <div class="row justify-content-center">
                         <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
           
@@ -60,7 +60,7 @@
                             <div class="d-flex flex-row align-items-center mb-4">
                               <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                               <div data-mdb-input-init class="form-outline flex-fill mb-0">
-                                <label class="form-label" for="form3Example4c">Mật Khẩu</label>
+                                <label class="form-label" for="passwordField">Mật Khẩu</label>
                                 {{form.password1}}
                               </div>
                             </div>
@@ -68,7 +68,7 @@
                             <div class="d-flex flex-row align-items-center mb-4">
                               <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                               <div data-mdb-input-init class="form-outline flex-fill mb-0">
-                                <label class="form-label" for="form3Example4cd">Nhập lại mật khẩu</label>
+                                <label class="form-label" for="passwordField">Nhập lại mật khẩu</label>
                                 {{form.password2}}
                               </div>
                             </div>
@@ -107,6 +107,23 @@
             </form>
 {% endcomment %}
             <script src="" async defer></script>
+            <script>
+              document.addEventListener('DOMContentLoaded', function () {
+                  const passwordField = document.getElementById('passwordField');
+                  const togglePassword = document.getElementById('togglePassword');
+          
+                  // Thêm sự kiện click để thay đổi trạng thái hiển thị mật khẩu
+                  togglePassword.addEventListener('click', function () {
+                      const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+                      passwordField.setAttribute('type', type);
+          
+                      // Chuyển đổi biểu tượng mắt
+                      this.classList.toggle('fa-eye');
+                      this.classList.toggle('fa-eye-slash');
+                  });
+              });
+            </script>
+          
         {% endblock register %}
     </body>
 </html>

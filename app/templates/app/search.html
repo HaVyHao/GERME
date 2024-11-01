@@ -11,18 +11,33 @@
     </head>
     <body>
         {% block register %}
-        <h5> Kết Quả Tìm Kiếm {{searched}} </h5> <br />
+        <h3> Kết Quả Tìm Kiếm {{searched}} </h3> <br />
         <div class = "row" style="width:100%">
           {%for product in keys %}
+{% comment %}
+            <div class = "col-lg-3">
+              <img class="thumbnail" src="{{product.ImageURL}}">
+              <div class="box-element product">
+                <h6><strong>{{product.name}}</strong></h6>
+                <hr>
+          
+                <button data-product={{product.id}} data-action= "add" class="btn btn-outline-secondary add-bth update-cart">Thêm vào giỏ hàng</button>
+                <a class="btn btn-outline-success"href="{% url 'detail' %}?id={{product.id}}">Xem</a>
+                <h5 style="display: inline-block; float: right"><strong>{{product.price | floatformat:2}}VND</strong></h5>      
+              </div>
+            </div>
+{% endcomment %}
           <div class = "col-lg-3">
-            <img class="thumbnail" src="{{product.ImageURL}}">
-            <div class="box-element product">
-              <h6><strong>{{product.name}}</strong></h6>
-              <hr>
-        
-              <button data-product={{product.id}} data-action= "add" class="btn btn-outline-secondary add-bth update-cart">Thêm vào giỏ hàng</button>
-              <a class="btn btn-outline-success"href="{% url 'detail' %}?id={{product.id}}">Xem</a>
-              <h5 style="display: inline-block; float: right"><strong>{{product.price | floatformat:2}}VND</strong></h5>      
+            <div class="text-center p-4"> <img id="main-image" src="{{product.ImageURL}}" width="250" />
+              <div class="card-body">
+                
+                <br />
+                <h6><strong>{{product.name}}</strong></h6>
+                <button data-product={{product.id}} data-action= "add" class="btn btn-outline-secondary add-bth update-cart">Thêm vào giỏ hàng</button>
+                <a class="btn btn-outline-success"href="{% url 'detail' %}?id={{product.id}}">Xem</a>
+                <hr>
+                <h5 style="display: inline-block "><strong>{{product.price | floatformat:2}}$</strong></h5>
+              </div> 
             </div>
           </div>
           {% endfor %}

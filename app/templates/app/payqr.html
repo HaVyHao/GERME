@@ -1,0 +1,31 @@
+{% extends "app/base.html" %}
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name = "description" content="">
+        <meta name = "viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        {% block register %}
+        <div class="d-flex justify-content-center mt-5">
+            <div class="card text-center shadow-lg" style="width: 35rem; height: 50rem; border-radius: 15px; border: none;">
+                <div class="card-header bg-primary text-white" style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
+                    <h5 class="mb-0 text-white">Thanh Toán Qua QR</h5>
+                </div>
+                <!-- Ảnh mã QR -->
+                <img src="{% static 'app/images/qr_code.jpg' %}" class="card-img-top mx-auto mt-3" alt="QR Code" style="width: 500px; height: 560px;">
+                <div class="card-body">
+                    <p class="card-text text-secondary" style="font-size: 1.1rem;">Quét mã QR bên trên để hoàn tất thanh toán của bạn. Hãy liên hệ với chúng tôi để xác nhập thanh toán</p>
+                    <a href="{% url 'pay' %}" class="btn btn-primary mt-3" style="border-radius: 25px; padding: 10px 20px;">Tiếp Tục</a>
+                </div>
+            </div>
+        </div>
+        {% endblock register %}
+        
+    </body>
+
+</html>

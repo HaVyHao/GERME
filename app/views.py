@@ -265,6 +265,8 @@ def updateitems(request):
         orderItem.quantity +=1
     elif action == 'remove':
         orderItem.quantity -=1
+    elif action == 'clear':
+        orderItem.quantity =0
     orderItem.save()
     if orderItem.quantity <=0:
         orderItem.delete()

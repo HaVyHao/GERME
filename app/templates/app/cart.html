@@ -12,7 +12,7 @@
 			<table class="table">
 				<tr>
 					<th><h5>Sản Phẩm: <strong>{{order.get_cart_items}}</strong></h5></th>
-					<th><h5>Tổng Tiền:<strong> {{order.get_cart_total}} VND</strong></h5></th>
+					<th><h5>Tổng Tiền:<strong> {{order.get_cart_total}} $</strong></h5></th>
 					<th>
 						<a  style="float:right; margin:5px;" class="btn btn-success" href="{% url 'checkout' %}">Thanh Toán</a>
 					</th>
@@ -45,7 +45,7 @@
 				</div>
 				<div style="flex:1.5"><p>{{item.get_total }} $</p></div>
 				<div class="quantity">
-					<a data-product = {{item.product.id}} data-action = 'remove' class="chg-quantity update-cart btn btn-danger mb-4" style="flex:1 float:right; width:80px; height:40px;">Xóa</a>
+					<a data-product = {{item.product.id}} data-action = 'clear' class="chg-quantity update-cart btn btn-danger mb-4" style="flex:1 float:right; width:80px; height:40px;">Xóa</a>
 				</div>
 			</div>
 			{% endfor %}

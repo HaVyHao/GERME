@@ -48,8 +48,15 @@
                                                 <span class="size" data-toggle="tooltip" title="xtra large">XL</span>
                                               </h5>
                                               
-                                              <div class="price d-flex flex-row align-items-center"> <span class="act-price">{{product.price}}VND</span>
-                                              </div>
+                                              <h5 style="display: inline-block; text-decoration: line-through; color: gray;">
+                                                {{ product.price|floatformat:2 }}$
+                                              </h5>
+                                              <h5 style="display: inline-block; color: red; margin-left: 10px;">
+                                                {{ product.discount_price|floatformat:2 }}$
+                                              </h5>
+                                              <span style="background-color: #ffe6e6; color: red; font-weight: bold; font-size: 12px; padding: 1px 3px; border-radius: 2px; margin-left: 5px; position: relative; top: -10px;">
+                                                -{{ product.discount_percent }}10%
+                                              </span>
                                           </div>
                                           <p class="about">{{product.detail}}</p>
                                           <div class="cart mt-4 align-items-center">

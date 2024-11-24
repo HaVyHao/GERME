@@ -167,7 +167,7 @@ def register(request):
         user_login = "hidden"
     #categories = Category.objects.filter(is_sub =False)
     sub_categories = Category.objects.filter(is_sub =True)
-    context = {'sub_categories':sub_categories,'form':form,'user_not_login':user_not_login,'user_login':user_login,'items': items,'cartItems':cartItems,}
+    context = {'sub_categories':sub_categories,'form':form,'user_not_login':user_not_login,'user_login':user_login}
     return render(request,'app/register.html',context)
 def loginPage(request):
     if request.user.is_authenticated:

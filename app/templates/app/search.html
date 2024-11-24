@@ -36,7 +36,19 @@
                 <button data-product={{product.id}} data-action= "add" class="btn btn-outline-secondary add-bth update-cart">Thêm vào giỏ hàng</button>
                 <a class="btn btn-outline-success"href="{% url 'detail' %}?id={{product.id}}">Xem</a>
                 <hr>
-                <h5 style="display: inline-block "><strong>{{product.price | floatformat:2}}$</strong></h5>
+{% comment %}
+                  <h5 style="display: inline-block "><strong>{{product.price | floatformat:2}}$</strong></h5>
+{% endcomment %}
+                <!-- Hiển thị giá cũ với gạch ngang -->
+                <h5 style="display: inline-block; text-decoration: line-through; color: gray;">
+                  {{ product.price|floatformat:2 }}$
+                </h5>
+                <h5 style="display: inline-block; color: red; margin-left: 10px;">
+                  {{ product.discount_price|floatformat:2 }}$
+                </h5>
+                <span style="background-color: #ffe6e6; color: red; font-weight: bold; font-size: 12px; padding: 1px 3px; border-radius: 2px; margin-left: 5px; position: relative; top: -10px;">
+                  -{{ product.discount_percent }}10%
+                </span>
               </div> 
             </div>
           </div>

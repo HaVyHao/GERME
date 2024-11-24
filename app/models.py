@@ -31,6 +31,10 @@ class Product(models.Model):
         except:
             url = ''
         return url
+    @property
+    def discount_price(self):
+        # Giảm giá 10% trên giá gốc
+        return round(self.price * 0.9, 2)  # Giá sau giảm 10%
 
 class Order(models.Model):
     customer = models.ForeignKey(User,on_delete=models.SET_NULL,blank=True,null=True)
@@ -58,7 +62,7 @@ class OrderItem(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
     @property
     def get_total(self):
-        total = self.product.price * self.quantity
+        total = self.product.discount_price * self.quantity
         return total
 class ShippingAddress(models.Model):
     customer = models.ForeignKey(User,on_delete=models.SET_NULL,blank=True,null=True)

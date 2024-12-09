@@ -133,5 +133,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'app/static/images')
 VNPAY_RETURN_URL = 'http://localhost:8000/payment_return'  # get from config
 VNPAY_PAYMENT_URL = 'https://sandbox.vnpayment.vn/paymentv2/vpcpay.html'  # get from config
 VNPAY_API_URL = 'https://sandbox.vnpayment.vn/merchant_webapi/api/transaction'
-VNPAY_TMN_CODE = ''  # Website ID in VNPAY System, get from config
-VNPAY_HASH_SECRET_KEY = ''  # Secret key for create checksum,get from config
+VNPAY_TMN_CODE = 'ADXOBWK1'  # Website ID in VNPAY System, get from config
+VNPAY_HASH_SECRET_KEY = 'TK70ATXJ58Z5G6BYYMU6OWKD3GSXMMID'  # Secret key for create checksum,get from config

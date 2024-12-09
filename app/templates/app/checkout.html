@@ -55,6 +55,10 @@
 							<input type="radio" id="payment-qr" name="payment_method" value="qr" class="form-check-input">
 							<label for="payment-qr">Thanh toán qua QR</label>
 						</div>
+						<div class="form-check">
+							<input type="radio" id="payment-vnpay" name="payment_method" value="vnpay" class="form-check-input">
+							<label for="payment-vnpay">Thanh toán qua VNPAY</label>
+						</div>
 					</div>
 				
 					<hr>
@@ -67,12 +71,14 @@
 						// Lấy giá trị của phương thức thanh toán
 						const paymentDirect = document.getElementById("payment-direct").checked;
 						const paymentQR = document.getElementById("payment-qr").checked;
-				
+						const paymentVNPAY = document.getElementById("payment-vnpay").checked;
 						// Chuyển hướng dựa trên lựa chọn
 						if (paymentDirect) {
 							window.location.href = "{% url 'pay' %}"; // Đường dẫn đến trang thanh toán trực tiếp
 						} else if (paymentQR) {
 							window.location.href = "{% url 'payqr' %}"; // Đường dẫn đến trang thanh toán qua QR
+						} else if (paymentVNPAY) {
+							window.location.href = "{% url 'index' %}"; // Đường dẫn đến trang thanh toán qua VNPAY	
 						} else {
 							alert("Vui lòng chọn phương thức thanh toán.");
 						}

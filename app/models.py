@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import Textarea
+from django import forms
 # Create your models here.
 #Change form register django
 class Category(models.Model):
@@ -40,9 +41,7 @@ class Order(models.Model):
     customer = models.ForeignKey(User,on_delete=models.SET_NULL,blank=True,null=True)
     date_order = models.DateTimeField(auto_now_add=True)
     complete = models.BooleanField(default=False,null=True,blank=False)
-    transaction_id = models.CharField(max_length=200,null=True)
-    
-    
+    transaction_id = models.CharField(max_length=200,null=True)    
     def __str__(self):
         return str(self.id)
     @property
@@ -64,6 +63,14 @@ class OrderItem(models.Model):
     def get_total(self):
         total = self.product.discount_price * self.quantity
         return total
+    
+class Payment_VNPay(models.Model):
+    order_id = models.IntegerField(default=0, null=True, blank=True)
+    amount = models.FloatField(default=0.0, null=True, blank=True)
+    order_desc = models.CharField(max_length=200,null=True, blank=True)
+    vnp_TransactionNo = models.CharField(max_length=200,null=True, blank=True)
+    vnp_ResponseCode = models.CharField(max_length=200,null=True, blank=True)
+
 class ShippingAddress(models.Model):
     customer = models.ForeignKey(User,on_delete=models.SET_NULL,blank=True,null=True)
     order = models.ForeignKey(Order,on_delete=models.SET_NULL,blank=True,null=True)
@@ -75,4 +82,13 @@ class ShippingAddress(models.Model):
 
     def __str__(self):
             return self.address
-    
+
+
+class PaymentForm(forms.Form):
+
+    order_id = forms.CharField(max_length=250)
+    order_type = forms.CharField(max_length=20)
+    amount = forms.IntegerField()
+    order_desc = forms.CharField(max_length=100)
+    bank_code = forms.CharField(max_length=20, required=False)
+    language = forms.CharField(max_length=2)
